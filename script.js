@@ -1,9 +1,5 @@
 const config = window.PORTFOLIO_CONFIG || {};
 
-const ANNOUNCEMENT_KEY = "portfolio_announcement_v1";
-const ANNOUNCEMENT_AUTH_SESSION_KEY = "portfolio_announcement_auth_v1";
-const ANNOUNCEMENT_EMPTY_MESSAGE = "There aren't any announcements at this moment.";
-
 const state = {
   activeTab: "home",
   announcementAuthorized: false,
@@ -374,8 +370,4 @@ bindTabs();
 bindClickSounds();
 loadDiscordPresence();
 setInterval(loadDiscordPresence, 15000);
-bindAnnouncementEditor();
-renderAnnouncementCard();
-applyAnnouncementSessionFromStorage();
-bindAnnouncementAccess();
 setActiveTab(state.activeTab);
