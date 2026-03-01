@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zen's Portfolio</title>
+    <meta
+      name="description"
+      content="Welcome to my portfolio!"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <header class="site-header glass">
+      <nav class="tab-nav" aria-label="Main navigation">
+        <button class="tab-link active" data-tab="home"><strong>Home</strong></button>
+        <button class="tab-link" data-tab="experience"><strong>Past Experiences</strong></button>
+        <button class="tab-link" data-tab="contact"><strong>Contact</strong></button>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section id="home" class="tab-panel active" aria-labelledby="home-tab">
+        <article class="hero glass">
+          <div class="profile-strip">
+            <div class="avatar-wrap">
+              <img id="discord-avatar" src="" alt="Profile avatar" />
+              <span id="status-dot" class="status-dot status-offline" aria-hidden="true"></span>
+            </div>
+            <div class="identity-meta">
+              <h1 class="identity-name">Your Name</h1>
+              <p class="identity-role">ROBLOX DEVELOPER</p>
+              <p id="discord-presence" class="presence-label">Offline</p>
+            </div>
+          </div>
+
+          <h2>Welcome to my portfolio!</h2>
+          <p class="about-text">
+            I’m a Roblox developer focused on gameplay systems, polished UX, and scalable content pipelines.
+            I collaborate with teams to ship experiences that are fun, performant, and creator-friendly.
+          </p>
+
+          <div class="hero-chips" aria-label="Main skills">
+            <span class="skill-chip" title="Lua" aria-label="Lua">
+              <img src="assets/icons/lua.svg" alt="Lua">
+            </span>
+
+            <span class="skill-chip" title="JavaScript" aria-label="JavaScript">
+              <img src="assets/icons/javascript.svg" alt="JavaScript">
+            </span>
+          </div>
+
+          <article id="announcement-card" class="glass announcement-card">
+            <div class="announcement-head">
+              <h3>Announcements</h3>
+            </div>
+
+            <div id="announcement-view" class="announcement-view hidden">
+              <h4 id="announcement-title" class="hidden"></h4>
+              <p id="announcement-message"></p>
+            </div>
+
+            <form id="announcement-form" class="announcement-form hidden" aria-label="Announcement editor">
+              <input id="announcement-title-input" type="text" placeholder="Title (e.g. Commissions Open)" maxlength="80" />
+              <textarea
+                id="announcement-message-input"
+                rows="4"
+                maxlength="1200"
+                placeholder="Write your announcement here..."
+              ></textarea>
+              <div class="button-row">
+                <button type="submit" class="action-btn">Save / Update</button>
+                <button type="button" id="announcement-delete" class="action-btn danger">Delete</button>
+              </div>
+            </form>
+          </article>
+        </article>
+      </section>
+
+      <section id="experience" class="tab-panel" aria-labelledby="experience-tab">
+        <article class="glass panel-head">
+          <h2>Past Experiences</h2>
+          <p>Click a timeline card to open that Roblox group in a new tab.</p>
+        </article>
+        <ol id="experience-timeline" class="timeline" aria-live="polite"></ol>
+      </section>
+
+      <section id="contact" class="tab-panel" aria-labelledby="contact-tab">
+        <article class="glass contact-card">
+          <h2>Contact</h2>
+          </p>
+          <ul>
+            <li><strong>E-mail:</strong> yourname@example.com</li>
+            <li><strong>Timezone:</strong> UTC+0</li>
+          </ul>
+          <div class="social-buttons" id="social-buttons" aria-label="Social links"></div>
+        </article>
+      </section>
+    </main>
+
+    <button
+      id="announcement-access-btn"
+      class="announcement-access-btn"
+      type="button"
+      aria-label="Open announcements admin login"
+      aria-haspopup="dialog"
+      title="Announcements"
+    >
+      <img src="assets/icons/admin.svg" alt="Announcements admin" />
+    </button>
+
+    <div
+      id="announcement-login-modal"
+      class="announcement-modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="announcement-login-title"
+    >
+      <div class="announcement-modal-panel glass">
+        <h3 id="announcement-login-title">Announcement Access</h3>
+        <p>Enter the user and password to edit announcements.</p>
+        <form id="announcement-login-form" class="announcement-login-form">
+          <input id="announcement-login-user" type="text" autocomplete="username" placeholder="Username" required />
+          <input id="announcement-login-pass" type="password" autocomplete="current-password" placeholder="Password" required />
+          <p id="announcement-login-error" class="announcement-login-error hidden">Invalid credentials. Try again.</p>
+          <div class="button-row">
+            <button type="submit" class="action-btn">Unlock</button>
+            <button id="announcement-login-close" type="button" class="action-btn danger">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="portfolio.config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
