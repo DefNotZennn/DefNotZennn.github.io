@@ -57,7 +57,7 @@ window.PORTFOLIO_CONFIG = {
     },
     {
       groupName: "Monaco Bakery",
-      role: "Co Owner & Programmer",
+      role: "Programmer",
       period: "2024 — 2025",
       description: "Monaco Bakery is an innovative, modern French bakery that takes great delight in both its delicious treats and excellent atmosphere. Monaco Bakery was founded in 2023 by Crytuls. Our bakery is located in Monaco, a tiny nation where you can see the Mediterranean Sea and gorgeous beaches. The highest level of customer care and service will always be offered at Monaco Bakery, a welcoming space for everybody. When ordering from Monaco Bakery, you'll never have to sacrifice flavor or quality.",
       robloxGroupUrl: "https://www.roblox.com/communities/4715532/Monaco-Bakery",
