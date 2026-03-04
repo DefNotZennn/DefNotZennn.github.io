@@ -3,7 +3,8 @@ const config = window.PORTFOLIO_CONFIG || {};
 const state = {
   activeTab: "home",
   currentStatus: null,
-  currentAvatar: null
+  currentAvatar: null,
+  totalVisits: 0
 };
 
 let clickAudio;
@@ -90,9 +91,9 @@ async function renderTimeline() {
   const container = document.getElementById("experience-timeline");
   if (!container || !config.experiences) return;
   container.innerHTML = "";
+  state.totalVisits = 0;
 
   const promises = config.experiences.map(async (exp, index) => {
-
     const placeIdMatch = exp.robloxGameUrl.match(/games\/(\d+)/);
     const placeId = placeIdMatch ? placeIdMatch[1] : null;
     const cardId = `game-${index}`;
@@ -123,6 +124,23 @@ async function renderTimeline() {
   });
 
   await Promise.all(promises);
+  updateTotalVisitsDisplay();
+}
+
+function updateTotalVisitsDisplay() {
+    const display = document.getElementById("total-visits");
+    if (!display) return;
+    
+    let formatted = state.totalVisits;
+    if (state.totalVisits >= 1000000000) {
+        formatted = (state.totalVisits / 1000000000).toFixed(1) + "B+";
+    } else if (state.totalVisits >= 1000000) {
+        formatted = (state.totalVisits / 1000000).toFixed(0) + "M+";
+    } else {
+        formatted = state.totalVisits.toLocaleString();
+    }
+    
+    display.innerHTML = `Contributed to <span class="visit-highlight">${formatted}</span> visits!`;
 }
 
 async function fetchRobloxData(placeId, cardId) {
@@ -143,6 +161,8 @@ async function fetchRobloxData(placeId, cardId) {
       const g = gameData.data[0];
       document.getElementById(`${cardId}-title`).textContent = g.name;
       document.getElementById(`${cardId}-visits`).textContent = `👁️ ${g.visits.toLocaleString()} Visits`;
+      
+      state.totalVisits += g.visits;
 
       const shortDesc = g.description.length > 150 ? g.description.substring(0, 150) + "..." : g.description;
       document.getElementById(`${cardId}-desc`).textContent = shortDesc || "No description available.";
@@ -164,7 +184,7 @@ async function loadDiscordPresence() {
 
   const statusMap = {
     "online": "Online",
-    "idle": "Away",
+    "idle": "Idle",
     "dnd": "Do Not Disturb",
     "offline": "Offline"
   };
@@ -180,8 +200,14 @@ async function loadDiscordPresence() {
     if (state.currentStatus !== status) {
       const dot = document.getElementById("status-dot");
       const label = document.getElementById("discord-presence");
+      
       if (dot) dot.className = `status-dot status-${status}`;
-      if (label) label.textContent = statusMap[status] || "Offline";
+      
+      if (label) {
+        label.textContent = statusMap[status] || "Offline";
+        label.className = `presence-label text-${status}`;
+      }
+      
       state.currentStatus = status;
     }
 
@@ -199,3 +225,4 @@ bindTabs();
 bindGlobalClicks();
 loadDiscordPresence();
 setInterval(loadDiscordPresence, 15000);
+setInterval(renderTimeline, 300000);

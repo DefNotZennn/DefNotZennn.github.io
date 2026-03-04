@@ -8,6 +8,11 @@
   --accent: #7c9dff;
   --accent-2: #52e3d4;
   --shadow: 0 20px 50px rgba(10, 14, 28, 0.45);
+  
+  --status-online: #33d17a;
+  --status-idle: #f8d66d;
+  --status-dnd: #ff5f6d;
+  --status-offline: #8b95b9;
 }
 
 * { box-sizing: border-box; }
@@ -81,21 +86,65 @@ body {
   padding: 2rem;
 }
 
+.panel-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  gap: 4px; 
+}
+
+.contact-card {
+  padding-top: 2.2rem; 
+}
+
+.contact-card .section-title {
+  margin-bottom: 1.2rem;
+}
+
 .section-title { 
-  margin: 0 0 1.5rem; 
+  margin: 0; 
   font-size: 1.5rem; 
   color: #fff; 
   font-weight: 700; 
 }
 
+.experience-subtext {
+  margin-top: 4px;
+  color: var(--text-soft);
+}
+
 .profile-strip {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 1.2rem;
   margin-bottom: 2rem;
+  text-align: left;
 }
 
-.avatar-wrap { position: relative; width: 85px; height: 85px; }
+.identity-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.identity-alias {
+  margin: 2px 0 4px 0; 
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.identity-sub {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.avatar-wrap { position: relative; width: 85px; height: 85px; flex-shrink: 0; }
 #discord-avatar {
   width: 100%;
   height: 100%;
@@ -113,19 +162,42 @@ body {
   bottom: 2px;
 }
 
-.status-online { background: #33d17a; }
-.status-idle { background: #f8d66d; }
-.status-dnd { background: #ff5f6d; }
-.status-offline { background: #8b95b9; }
+.status-online, .text-online { background-color: var(--status-online); color: var(--status-online); }
+.status-idle, .text-idle { background-color: var(--status-idle); color: var(--status-idle); }
+.status-dnd, .text-dnd { background-color: var(--status-dnd); color: var(--status-dnd); }
+.status-offline, .text-offline { background-color: var(--status-offline); color: var(--status-offline); }
 
-.identity-name { margin: 0; font-size: 1.6rem; }
-.identity-role { margin: 0.2rem 0 0; color: var(--accent-2); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.1em; }
-.presence-label { margin: 0.3rem 0 0; color: #a9b7e4; font-size: 0.95rem; }
+.presence-label {
+  margin: 0.1rem 0 0;
+  font-size: 0.9rem;
+  background-color: transparent !important; 
+}
+
+.identity-name { margin: 0; font-size: 1.8rem; line-height: 1; }
+.identity-role { margin: 0; color: var(--accent-2); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.1em; }
+
+.total-visits-counter {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin: 4px 0; 
+    line-height: 1.2;
+    display: inline-block;
+}
+
+.visit-highlight {
+    font-size: 1.5rem;
+}
+
+.about-content { text-align: left; }
+.about-content .section-title { margin-bottom: 1.5rem; margin-top: 1rem; }
 
 .about-text, .skills-list { color: var(--text-soft); line-height: 1.7; font-size: 1rem; }
 .skills-list { padding-left: 1.2rem; }
 
-.hero-chips { display: flex; gap: 0.8rem; margin-top: 2rem; }
+.hero-chips { display: flex; gap: 0.8rem; margin-top: 2rem; justify-content: flex-start; }
 .skill-chip {
   width: 52px;
   height: 52px;
@@ -160,7 +232,7 @@ body {
 .game-thumb-side { width: 100%; height: 100%; min-height: 220px; position: relative; background: #000; border-right: 1px solid var(--surface-border); }
 .game-thumb-side img { width: 100%; height: 100%; object-fit: cover; }
 
-.game-info-side { padding: 1.5rem; display: flex; flex-direction: column; }
+.game-info-side { padding: 1.5rem; display: flex; flex-direction: column; text-align: left; }
 .timeline-game-name { margin: 0 0 0.5rem; font-size: 1.4rem; color: #fff; font-weight: 700; }
 
 .timeline-role-row { 
