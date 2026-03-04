@@ -2,7 +2,7 @@ window.PORTFOLIO_CONFIG = {
   name: "Zen",
   role: "Full-Stack Developer",
   about: {
-    introduction: "Hiya! I'm Zen, a 18-year-old developer with over 4 years of experience in LUA and JavaScript. My clients value my dedication to delivering high-quality work on time.",
+    introduction: "Hiya! I'm Zen, a 19-year-old developer with over 5 years of experience in LUA and JavaScript. My clients value my dedication to delivering high-quality work on time.",
     skills: [
       "Proficient in LUA and JavaScript languages.",
       "Familiar with object-oriented programming (OOP).",
