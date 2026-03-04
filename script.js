@@ -225,4 +225,3 @@ bindTabs();
 bindGlobalClicks();
 loadDiscordPresence();
 setInterval(loadDiscordPresence, 15000);
-setInterval(renderTimeline, 300000);
